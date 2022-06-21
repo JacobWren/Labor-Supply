@@ -27,15 +27,12 @@ labsupderiv <- function(w,e,a,m){
 # predict(labsup, newdata = list(wage=8, wagesq=64, educ=12))
 lscoef = labsup$coefficients
 
-
-
 # elas <- function(w) {
 #  dhdw <- lscoef[2] + 2*lscoef[3]*w
 #  h <- lscoef[1] + lscoef[2]*w + lscoef[3]*w^2 + lscoef[4]*w
 #  e <- dhdw*(w/h)
 #  return(e)
 # }
-
 
 elas <- function(w,e,a,m) {
   dhdw <- labsupderiv(w,e,a,m)
@@ -55,4 +52,3 @@ elas(20,mean_educ,mean_age,mean_married)
 wagevals <- 1:30
 hourspred2 <- lscoef[1] + lscoef[2]*wagevals + lscoef[3]*wagevals^2 + lscoef[4]*mean_educ + lscoef[5]*mean_age + lscoef[6]*mean_married
 plot(hourspred2,wagevals,'l')
-
